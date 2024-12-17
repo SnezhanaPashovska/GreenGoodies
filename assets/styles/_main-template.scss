@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+$header-color: #fffdf7;
+$primary-color: #497555;
+$logo-font: 'Playfair Display', serif;
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+header {
+    background-color: $header-color;
+    display: flex;
+    flex-direction: row;
+    padding: 10px 30px;
+
+    .logo {
+        display: flex;
+        flex-direction: row;
+        width: 20%;
+        align-items: center; 
+        justify-content: space-evenly;
+        justify-content: center;
+        gap: 10px;
+        font-family: $logo-font;
+        color: $primary-color;
+        font-weight: 400;
+
+        img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+    }
+    nav {
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+
+        .nav-menu {
+                display: flex;
+                flex-direction: row;
+                width: 60%;
+                list-style: none;
+                justify-content: space-evenly;
+                cursor: pointer;
+        }
+    }
+}
+
+main {
+    flex: 1; 
+    padding: 20px;
+}
+
+footer {
+    padding: 20px 30px;
+    text-align: right;
+    cursor: pointer;
+}
