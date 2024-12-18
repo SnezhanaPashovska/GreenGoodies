@@ -1,0 +1,227 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+header {
+  background-color: #fffdf7;
+  display: flex;
+  flex-direction: row;
+  padding: 10px 30px;
+}
+header .logo {
+  display: flex;
+  flex-direction: row;
+  width: 20%;
+  align-items: center;
+  justify-content: space-evenly;
+  justify-content: center;
+  gap: 10px;
+  font-family: "Playfair Display", serif;
+  color: #497555;
+  font-weight: 400;
+}
+header .logo img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+header .logo .logo-text {
+  font-size: 17px;
+}
+header nav {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+header nav .nav-menu {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  list-style: none;
+  justify-content: space-evenly;
+  cursor: pointer;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  padding: 20px 30px;
+  text-align: right;
+  cursor: pointer;
+}
+
+.registration-container {
+  background-color: #fffdf7;
+  margin: 0px;
+  display: flex;
+  flex-direction: row;
+}
+.registration-container .image-registration {
+  width: 50%;
+}
+.registration-container .image-registration img {
+  height: 100%;
+  object-fit: cover;
+}
+.registration-container .subscription-form {
+  border-top: 1px solid #f9f8f2;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 120px 0px 0px 130px;
+}
+.registration-container .subscription-form h1, .registration-container .subscription-form p {
+  align-self: flex-start;
+  text-align: left;
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  margin: 0;
+}
+.registration-container .subscription-form p {
+  color: #666666;
+  margin-top: 20px;
+}
+.registration-container .subscription-form .form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+  height: 600px;
+  margin-top: 30px;
+}
+.registration-container .subscription-form .form .form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.registration-container .subscription-form .form .form-group label {
+  margin-bottom: 5px;
+  color: #666666;
+}
+.registration-container .subscription-form .form .form-group input, .registration-container .subscription-form .form .form-group select, .registration-container .subscription-form .form .form-group textarea {
+  padding: 8px;
+  border: 1px solid #666666;
+  height: 35px;
+  background-color: #fffdf7;
+}
+.registration-container .subscription-form .form-group.checkbox {
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 10px;
+}
+.registration-container .subscription-form .form-group.checkbox input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 0;
+  outline: none;
+  position: relative;
+  appearance: none;
+}
+.registration-container .subscription-form .form-group.checkbox input[type=checkbox]:checked {
+  background-color: #497555;
+  content: "";
+}
+.registration-container .subscription-form .form-group.checkbox label {
+  padding-top: 5px;
+}
+.registration-container .subscription-form button {
+  height: 60px;
+  margin-top: 10px;
+  background-color: #565656;
+  color: white;
+}
+.registration-container .connection-account {
+  margin-top: 20px;
+  text-align: center;
+  width: 80%;
+}
+.registration-container .connection-account a {
+  color: #666666;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.login-container {
+  background-color: #fffdf7;
+  margin: 0px;
+  display: flex;
+  flex-direction: row;
+}
+.login-container .image-login {
+  width: 50%;
+}
+.login-container .image-login img {
+  height: 100%;
+  object-fit: cover;
+}
+.login-container .subscription-form {
+  border-top: 1px solid #f9f8f2;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 120px 0px 0px 130px;
+}
+.login-container .subscription-form h1, .login-container .subscription-form p {
+  align-self: flex-start;
+  text-align: left;
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  margin: 0;
+}
+.login-container .subscription-form p {
+  color: #666666;
+  margin-top: 20px;
+}
+.login-container .subscription-form .form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 80%;
+  height: 300px;
+  margin-top: 30px;
+}
+.login-container .subscription-form .form .form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.login-container .subscription-form .form .form-group label {
+  margin-bottom: 5px;
+  color: #666666;
+}
+.login-container .subscription-form .form .form-group input, .login-container .subscription-form .form .form-group select, .login-container .subscription-form .form .form-group textarea {
+  padding: 8px;
+  border: 1px solid #666666;
+  height: 35px;
+  background-color: #fffdf7;
+}
+.login-container .subscription-form .form label {
+  padding-top: 5px;
+}
+.login-container .subscription-form button {
+  height: 60px;
+  margin-top: 10px;
+  background-color: #565656;
+  color: white;
+}
+.login-container .register-account {
+  margin-top: 20px;
+  text-align: center;
+  width: 80%;
+}
+.login-container .register-account a {
+  color: #666666;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/*# sourceMappingURL=app.css.map */

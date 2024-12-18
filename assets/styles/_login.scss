@@ -1,0 +1,91 @@
+@use 'fonts-and-colors' as *;
+
+.login-container {
+  background-color: $header-color;
+  margin: 0px;
+  display: flex;
+  flex-direction: row;
+
+  .image-login {
+    width: 50%;
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .subscription-form {
+    border-top: 1px solid #f9f8f2;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding:120px 0px 0px 130px;
+    
+    
+    
+    h1, p {
+      align-self: flex-start;
+      text-align: left;
+      font-family: $main-font;
+      font-weight: 300;
+      margin: 0;
+    }
+
+    p {
+      color: $form-label-color;
+      margin-top: 20px;
+    }
+
+      .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 80%;
+        height: 300px;
+        margin-top: 30px;
+
+          .form-group {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            
+
+            label {
+              margin-bottom: 5px; 
+              color: $form-label-color;  
+            }
+
+            input, select, textarea {
+              padding: 8px;       
+              border: 1px solid $form-label-color;
+              height: 35px;
+              background-color: $header-color;
+            }
+          }
+      
+
+        label {
+          padding-top: 5px;
+        }
+      }
+
+      button {
+        height: 60px;
+        margin-top: 10px;
+        background-color: $gray-color;
+        color: white;
+      }
+  }
+
+  .register-account {
+    margin-top: 20px;
+    text-align: center;
+    width: 80%;
+
+    a{
+      color: $form-label-color;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+  }
+}

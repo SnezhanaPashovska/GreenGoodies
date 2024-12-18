@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block title %}Login
+{% endblock %}
+
+
+
+
+{% block body %}
+
+<div class="login-container">
+		<div class="image-login">
+			<img src="{{ asset('images/branch.svg') }}" class="image-reg" alt="Green Leaves">
+		</div>
+		<div class="subscription-form">
+			<h1>Connexion</h1>
+
+			{{ form_start(loginForm) }}
+			<!-- Start of form -->
+			<div class="form">
+				
+				<div class="form-group">
+					{{ form_label(loginForm.email) }}
+					{{ form_widget(loginForm.email) }}
+				</div>
+				<div class="form-group">
+					{{ form_label(loginForm.password) }}
+					{{ form_widget(loginForm.password) }}
+				</div>
+				<button type="submit" class="button-continue">Se connecter</button>
+			</div>
+			{{ form_end(loginForm) }}
+			<!-- End of form -->
+
+			<div class="register-account">
+				<a href="{{ path('app_register') }}">Pas encore de compte ? S’inscrire</a>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+

@@ -15,14 +15,4 @@ class ViewController extends AbstractController
             'controller_name' => 'ViewController',
         ]);
     }
-
-    #[Route('/register', name: 'register')]
-    public function register(): Response
-    {
-        return $this->render('user/register.html.twig', [
-            'controller_name' => 'ViewController',
-        ]);
-    }
-
-
 }
