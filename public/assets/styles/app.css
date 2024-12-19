@@ -193,6 +193,7 @@ footer {
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-top: 25px;
 }
 .login-container .subscription-form .form .form-group label {
   margin-bottom: 5px;
@@ -209,9 +210,10 @@ footer {
 }
 .login-container .subscription-form button {
   height: 60px;
-  margin-top: 10px;
+  margin-top: 25px;
   background-color: #565656;
   color: white;
+  width: 100%;
 }
 .login-container .register-account {
   margin-top: 20px;

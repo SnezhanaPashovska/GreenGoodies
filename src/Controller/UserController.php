@@ -66,4 +66,6 @@ class UserController extends AbstractController
 
         return new JsonResponse($responseArray, Response::HTTP_CREATED, ['Location' => $location]);
     }
+
+    
 }

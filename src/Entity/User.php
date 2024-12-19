@@ -43,6 +43,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Groups('user')]
     private ?string $lastname = null;
 
+    #[ORM\Column(nullable: true)]
+    #[Groups('user')]
+    private ?bool $apiAccess = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -138,6 +142,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLastname(string $lastname): static
     {
         $this->lastname = $lastname;
+
+        return $this;
+    }
+
+    public function isApiAccess(): ?bool
+    {
+        return $this->apiAccess;
+    }
+
+    public function setApiAccess(?bool $apiAccess): static
+    {
+        $this->apiAccess = $apiAccess;
 
         return $this;
     }
