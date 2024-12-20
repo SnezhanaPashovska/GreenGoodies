@@ -14,26 +14,16 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class LoginController extends AbstractController
 {
     #[Route('/login', name: 'app_login')]
-    public function login(Request $request, EntityManagerInterface $entityManager, AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
-
+        
         $email = $authenticationUtils->getLastUsername();
 
-        $user = new User();
-        $loginForm = $this->createForm(LoginType::class, $user);
+        $error = $authenticationUtils->getLastAuthenticationError();
 
-        $loginForm->handleRequest($request);
-
-        if ($loginForm->isSubmitted() && $loginForm->isValid()) {
-            return $this->redirectToRoute('app_home');
-
-            $error = $authenticationUtils->getLastAuthenticationError();
-
-            return $this->render('user/login.html.twig', [
-                'loginForm' => $loginForm->createView(),
-                'email' => $email,
-                'error' => $error,
-            ]);
-        }
+        return $this->render('user/login.html.twig', [
+            'email' => $email,
+            'error' => $error,
+        ]);
     }
 }

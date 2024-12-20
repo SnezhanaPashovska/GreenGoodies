@@ -7,25 +7,29 @@
 			{% endblock %}
 		</title>
 		{% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+			{{ encore_entry_link_tags('app') }}
 			<link rel="stylesheet" href="{{ asset('assets/styles/app.css') }}">
 		{% endblock %}
 
 		{% block javascripts %}{% endblock %}
-            {{ encore_entry_script_tags('app') }}
+		{{ encore_entry_script_tags('app') }}
 	</head>
 	<body>
 		<header>
-			<div class="logo"> 
-            <img src="{{ asset('images/logo.svg') }}" class="logo-image" alt="Logo">
-						<p class="logo-text"> Green Goodies </p>
-            </div>
+			<div class="logo">
+			<a href="{{ path('app_home') }}" class="logo-link">
+				<img src="{{ asset('images/logo.svg') }}" class="logo-image" alt="Logo">
+				<p class="logo-text">
+					Green Goodies
+				</p>
+				</a>
+			</div>
 			<nav>
 				<ul class="nav-menu">
-					<li>Nos produits</li>
-					<li>Mon panier</li>
-					<li>Mon compte</li>
-					<li>Connexion</li>
+					<li><a href="#">Nos produits</a></li>
+					<li><a href="#">Mon panier</a></li>
+					<li><a href="#">Mon compte</a></li>
+					<li><a href="{{ path('app_login') }}">Connexion</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -33,6 +37,8 @@
 			{% block body %}<!-- Content from child templates will go here -->{% endblock %}
 		</main>
 
-        <footer> © GreenGoodies - 2024 </footer>
+		<footer>
+			© GreenGoodies - 2024
+		</footer>
 	</body>
 </html>

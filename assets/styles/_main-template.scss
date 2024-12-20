@@ -32,11 +32,19 @@ header {
             width: 20px;
             height: 20px;
             object-fit: contain;
-            
+            margin: 15px 5px 0px 0px;
         }
 
         .logo-text {
             font-size: 17px;
+        }
+
+        .logo-link {
+            display: flex;
+            flex-direction: row;
+            text-decoration: none;
+            color: $primary-color;
+            font-family: $logo-font;
         }
     }
     nav {
@@ -53,6 +61,12 @@ header {
                 list-style: none;
                 justify-content: space-evenly;
                 cursor: pointer;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: black;
+           
         }
     }
 }

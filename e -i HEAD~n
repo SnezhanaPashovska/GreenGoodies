@@ -1,0 +1,47 @@
+[33mcommit b1162526d46311b41da132b2a02a176c14cc3b5a[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Snezhana Pashovska <snezhana.pashovska@hotmail.com>
+Date:   Thu Dec 19 15:54:20 2024 +0100
+
+    Creation of API login, LoginController and fixing the issue with the login form
+
+[33mcommit 8d13f5be960cecd39095e68f2aea0814b23bd23a[m
+Author: Snezhana Pashovska <snezhana.pashovska@hotmail.com>
+Date:   Thu Dec 19 15:50:40 2024 +0100
+
+    Remove .env from tracking
+
+[33mcommit 64c516fc1d6059e207bf13975f809e7840c7ef2c[m
+Author: Snezhana Pashovska <snezhana.pashovska@hotmail.com>
+Date:   Wed Dec 18 23:03:08 2024 +0100
+
+    Creation of Register and login forms, register and login twig,  RegisterController
+
+[33mcommit 5b38e6f2da87eef62c5595b5a07bfb190e389a0b[m
+Author: Snezhana Pashovska <snezhana.pashovska@hotmail.com>
+Date:   Tue Dec 17 10:11:34 2024 +0100
+
+    Creation of API POST/api/users (create an account), GET/api/users/{id} (get a user). Frontend - creation of base template.
+
+[33mcommit 884c732e6b8d709f7e65ad1d2e5eaec561ba444d[m
+Author: Snezhana Pashovska <snezhana.pashovska@hotmail.com>
+Date:   Mon Dec 16 11:14:56 2024 +0100
+
+    Readme
+
+[33mcommit 4e9430486f3667683fb7d6fab7cd51bdddd23e37[m
+Author: Snezhana Pashovska <snezhana.pashovska@hotmail.com>
+Date:   Mon Dec 16 11:12:43 2024 +0100
+
+    Force merge changes
+
+[33mcommit 26d3dffc7d62ee3043b744ac6be288341cb4c379[m[33m ([m[1;32mmaster[m[33m)[m
+Author: Snezhana Pashovska <snezhana.pashovska@hotmail.com>
+Date:   Mon Dec 16 11:01:53 2024 +0100
+
+    Initial commit
+
+[33mcommit acd914233ae5f73f15ee4c356c17659faf0fbe13[m
+Author: Snezhana Pashovska <snezhana.pashovska@hotmail.com>
+Date:   Mon Dec 16 10:53:31 2024 +0100
+
+    Add initial set of files

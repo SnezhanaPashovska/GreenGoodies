@@ -1,0 +1,207 @@
+@use 'fonts-and-colors' as *;
+
+.homepage-container {
+  
+  .welcome-container {
+    display: flex;
+    flex-direction: row;
+
+    .welcome-container_text{
+      width: 50%;
+      background-color: $mint-green;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; 
+
+      h1{
+        width: 51%;
+        font-family: $main-font;
+        font-size: 50px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+      
+      p{
+        width: 51%;
+        font-size: 20px;
+        font-weight:100;
+        margin-top: 10px;
+        margin-bottom: 0;
+        cursor: pointer;
+    }
+
+    .line-before-br {
+      display: inline-block;
+    }
+  
+    .line-after-br {
+      display: inline-block;
+      margin-top: 20px;
+    }
+  }
+
+  }
+
+  .welcome-container_photo {
+    width: 50%;
+    object-fit: cover;
+
+    img{
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .our-products{
+    border: 1px solid  $header-color;
+    background-color: $header-color;
+
+    h2{
+      font-size: 15px;
+      font-family: $main-font;
+      font-weight: 500;
+      width: 80%;
+      margin: 35px 0px 35px 65px;
+      cursor: pointer;
+    }
+  }
+
+  .our-products_cards{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .our-products_card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 33.33%;
+      background-color: $header-color;
+
+      img {
+        object-fit: cover;
+        width: 100%;
+      }
+
+      .product-card_details {
+        width: 100%;
+      
+
+        p{
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          text-align: center;
+        }
+
+        .product-card_name{
+          font-size: 17px;
+          font-weight: 600;
+        }
+
+        .product-card_description, .product-card_price{
+          font-size: 14px;
+          opacity: 0.6;
+        }
+      }
+
+      a {
+        text-decoration: none;
+        margin: 40px 0px 30px 0px;
+        font-size: 14px;
+        color: black;
+      }
+
+      a:hover {
+        color: $primary-color;
+      }
+    }
+  }
+
+  .conviction-values-container{
+
+    .conviction-values-container_conviction {
+      display: flex;
+      flex-direction: row;
+
+
+      .conviction-values-container_conviction_text {
+        background-color: $beige-background;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        width: 60%;
+
+        h3{ 
+          width: 50%;
+          font-weight: 400;
+          margin-left: 50px;
+          font-size: 25px;
+        }
+
+        p{
+          width: 57%;
+          font-weight: 200;
+          margin: 0px 0px 50px 50px;
+          text-align: left;
+          font-size: 15px;
+          opacity: 0.8;
+        }
+      }
+
+      .conviction-values-container_conviction_image {
+        width: 40%;
+
+        img {
+          object-fit: cover;
+          height: 100%;
+          width: 100%;
+        }
+      }
+    }
+
+    .conviction-values-container_values{
+      display: flex;
+      flex-direction: row;
+
+      .conviction-values-container_values_image{
+        width: 40%;
+
+        img {
+          object-fit: cover;
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      .conviction-values-container_values_text{
+        background-color: $mint-green;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+        width: 60%;
+
+        h3{ 
+          width: 50%;
+          font-weight: 400;
+          margin-right: 75px;
+          font-size: 25px;
+        }
+
+        p{
+          width: 47%;
+          font-weight: 200;
+          margin: 0px 100px 50px 0px;
+          text-align: left;
+          font-size: 15px;
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+  
+}

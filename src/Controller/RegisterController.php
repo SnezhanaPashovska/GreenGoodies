@@ -34,9 +34,9 @@ class RegisterController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // Redirect to the homepage with a success message
+            // Redirect to the login with a success message
             $this->addFlash('success', 'Registration successful! You can now log in.');
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_login');
         }
 
         // Render the registration form if not submitted or invalid
