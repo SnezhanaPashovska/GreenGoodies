@@ -1,7 +1,24 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello ProductController!{% endblock %}
-
-{% block body %}
-<h1>Product!!</h1>
+{% extends 'base.html.twig' %} {% block title %} Produit - {{ product.name }}{%
+endblock %} {% block body %}
+<div class="product-detail-container">
+  <div class="detail-image">
+    <div class="image-frame">
+      <img src="{{ product.image }}" alt="{{ product.image }}" />
+    </div>
+  </div>
+  <div class="product-details">
+    <div class="details">
+      <h1>{{ product.name }}</h1>
+      <p class="price">{{ product.price }} €</p>
+      <h2>Description</h2>
+      <p class="description">{{ product.description | nl2br }}</p>
+    </div>
+      <div class="add-btn">
+        <button class="add-to-cart" data-product-id="{{ product.id }}">
+          Ajouter au panier
+        </button>
+      </div>
+    
+  </div>
+</div>
 {% endblock %}

@@ -306,9 +306,15 @@ footer {
   width: 33.33%;
   background-color: #fffdf7;
 }
+.homepage-container .our-products_cards .our-products_card .image-frame {
+  width: 100%;
+  height: 474px;
+  margin-bottom: 20px;
+}
 .homepage-container .our-products_cards .our-products_card img {
   object-fit: cover;
   width: 100%;
+  height: 100%;
 }
 .homepage-container .our-products_cards .our-products_card .product-card_details {
   width: 100%;
@@ -402,6 +408,80 @@ footer {
   text-align: left;
   font-size: 15px;
   opacity: 0.8;
+}
+
+.product-detail-container {
+  border-top: 1px solid #f9f8f2;
+  display: flex;
+  flex-direction: row;
+  background-color: #fffdf7;
+  padding-bottom: 300px;
+}
+.product-detail-container .detail-image {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-detail-container .detail-image .image-frame {
+  width: 900px;
+  height: 900px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-detail-container .detail-image .image-frame img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.product-detail-container .product-details {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 900px;
+  justify-content: space-between;
+}
+.product-detail-container .product-details .details {
+  width: 80%;
+  margin-top: 95px;
+  height: 50%;
+}
+.product-detail-container .product-details .details h1 {
+  font-size: 20px;
+  font-weight: 400;
+}
+.product-detail-container .product-details .details .price {
+  font-size: 30px;
+  font-weight: 100;
+}
+.product-detail-container .product-details .details h2 {
+  font-size: 13px;
+  font-weight: 300;
+  opacity: 0.8;
+}
+.product-detail-container .product-details .details .description {
+  font-size: 17px;
+  opacity: 0.8;
+  max-height: 260px;
+  overflow-y: auto;
+  padding: 0px 10px 10px 0px;
+}
+.product-detail-container .add-btn {
+  width: 80%;
+}
+.product-detail-container .add-btn button {
+  width: 100%;
+  height: 77px;
+  background-color: #565656;
+  color: white;
+  justify-self: baseline;
+  cursor: pointer;
+}
+.product-detail-container .add-btn button:hover {
+  background-color: #666666;
 }
 
 /*# sourceMappingURL=app.css.map */

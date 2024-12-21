@@ -27,11 +27,13 @@ block body %}
   <div class="our-products_cards">
     {% for product in products %}
     <div class="our-products_card">
+      <div class="image-frame">
       <img
         src="{{ product.image }}"
         alt="{{ product.name }}"
         class="product-card_photo"
       />
+    </div>
       <div class="product-card_details">
         <p class="product-card_name">{{ product.name }}</p>
         <p class="product-card_description">{{ product.shortDescription }}</p>
