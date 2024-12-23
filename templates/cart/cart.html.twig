@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %} {% block title %}Green Goodies | Mon Panier{%
+endblock %} {% block body %}
+<div class="cart-container">
+  <div class="cart">
+    <h1>Mon Panier</h1>
+    <a href="">x Vider le panier</a>
+    <div class="cart-product">
+      <img src="images/Rectangle6.jpg" alt="" class="product-image" />
+      <div class="product-detail">
+        <p class="product-name">Nécessaire, déodorant Bio</p>
+        <p class="quantity">Quantité : 1</p>
+        <p class="price">8,90€</p>
+      </div>
+    </div>
+    <div class="total-price">
+      <p class="ttl-price">Total panier : <span class="euros">20,00€</span> </p>
+      <p class="delivery">Frais de livraison : Offert</p>
+    </div>
+    <div class="checkout">
+      <button class="checkout-btn">Valider la commande</button>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

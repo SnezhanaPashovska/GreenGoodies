@@ -10,6 +10,10 @@
 			{{ encore_entry_link_tags('app') }}
 			<link rel="stylesheet" href="{{ asset('assets/styles/app.css') }}">
 		{% endblock %}
+		{% block head %}
+    <link rel="icon" href="{{ asset('images/logo.svg') }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('images/logo.svg') }}" type="image/x-icon" />
+    {% endblock %}
 
 		{% block javascripts %}{% endblock %}
 		{{ encore_entry_script_tags('app') }}
@@ -27,7 +31,7 @@
 			<nav>
 				<ul class="nav-menu">
 					<li><a href="#">Nos produits</a></li>
-					<li><a href="#">Mon panier</a></li>
+					<li><a href="{{ path('view_cart') }}">Mon panier</a></li>
 					<li><a href="#">Mon compte</a></li>
 					<li><a href="{{ path('app_login') }}">Connexion</a></li>
 				</ul>

@@ -1,0 +1,109 @@
+@use 'fonts-and-colors' as *;
+
+.cart-container {
+  background-color: $alabaster;
+  display: flex;
+  justify-content: center;
+  justify-content: center;
+  align-items: center; 
+  width: 100%; 
+  height: 100vh; 
+  
+
+  .cart {
+    width: 50%;
+    height: auto;
+  
+    h1 {
+      font-weight: 200;
+      text-align: center;
+      font-size: 23px;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+      opacity: 0.6;
+      font-size: 13px;
+    }
+    a:hover{
+      color: black;
+      opacity: 1;
+    }
+
+    .cart-product {
+      display: flex;
+      flex-direction: row;
+      padding: 30px;
+      background-color: #fffdf7;
+      justify-content: space-around;
+      margin: 25px 0px 5px 0px;
+      
+
+      .product-image {
+        width: 200px;
+        height: 200px;
+      }
+
+      .product-detail {
+        width: 55%;
+
+        .product-name {
+          font-weight: 600;
+          font-size: 17px;
+        }
+
+        .quantity {
+          opacity: 0.6;
+          font-size: 13px;
+        }
+
+        .price {
+          font-size: 17px;
+          font-weight: 200px;
+        }
+      }
+    }
+
+    .total-price {
+      background-color: #fffdf7;
+      text-align: right;
+      padding:10px 35px 0px 0px;
+      height: 81px;
+
+      .ttl-price {
+        font-size: 15px;
+        font-weight: 200px;
+      }
+
+      .euros {
+        font-size: 17px;
+      }
+
+      .delivery {
+        font-size: 13px;
+        opacity: 0.6;
+      }
+    }
+  }
+
+  .checkout {
+    
+    margin-top: 25px;
+    width: 70%;
+   justify-self: center;
+
+   .checkout-btn {
+    width: 100%;
+    height: 77px;
+    background-color: $gray-color;
+    color: white;
+    cursor: pointer;
+    border: 1px solid transparent;
+
+    &:hover {
+      background-color: $form-label-color;
+    }
+   }
+  }
+}
