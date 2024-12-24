@@ -124,7 +124,7 @@ class Product
     {
         if (!$this->orders->contains($order)) {
             $this->orders->add($order);
-            $order->setProductId($this);
+            $order->addProduct($this);
         }
 
         return $this;
@@ -133,10 +133,7 @@ class Product
     public function removeOrder(Order $order): static
     {
         if ($this->orders->removeElement($order)) {
-            // set the owning side to null (unless already changed)
-            if ($order->getProductId() === $this) {
-                $order->setProductId(null);
-            }
+            $order->removeProduct($this);
         }
 
         return $this;

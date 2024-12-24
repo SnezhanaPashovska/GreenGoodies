@@ -3,22 +3,42 @@ endblock %} {% block body %}
 <div class="cart-container">
   <div class="cart">
     <h1>Mon Panier</h1>
-    <a href="">x Vider le panier</a>
+    {% if cart is not empty %}
+     <form action="{{ path('clear_cart') }}" method="post" class="clear-cart-form">
+        <button type="submit" class="clear-cart-btn">x Vider le panier</button>
+    </form>
+    {% for item in products %}
     <div class="cart-product">
-      <img src="images/Rectangle6.jpg" alt="" class="product-image" />
+      <img
+        src="{{ item.product.image }}"
+        alt="{{ item.product.name }}"
+        class="product-image"
+      />
       <div class="product-detail">
-        <p class="product-name">Nécessaire, déodorant Bio</p>
-        <p class="quantity">Quantité : 1</p>
-        <p class="price">8,90€</p>
+        <p class="product-name">{{ item.product.name }}</p>
+        <p class="quantity"> Quantité : {{ item.quantity }}</p>
+        <p class="price">
+          {{ (item.product.price * item.quantity)|number_format(2, ',', ' ') }}€
+        </p>
       </div>
     </div>
+    {% endfor %}
+
     <div class="total-price">
-      <p class="ttl-price">Total panier : <span class="euros">20,00€</span> </p>
+      <p class="ttl-price">
+        Total panier :
+        <span class="euros">{{ total|number_format(2, ',', ' ') }}</span>
+      </p>
       <p class="delivery">Frais de livraison : Offert</p>
     </div>
     <div class="checkout">
       <button class="checkout-btn">Valider la commande</button>
     </div>
+    {% else %}
+    <p class="empty">Votre panier est vide.</p>
+    
+
+    {% endif %}
   </div>
 </div>
 

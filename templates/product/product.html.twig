@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %} {% block title %} Produit - {{ product.name }}{%
+{% extends 'base.html.twig' %} {% block title %} Produit | {{ product.name }}{%
 endblock %} {% block body %}
 <div class="product-detail-container">
   <div class="detail-image">
@@ -13,12 +13,22 @@ endblock %} {% block body %}
       <h2>Description</h2>
       <p class="description">{{ product.description | nl2br }}</p>
     </div>
-      <div class="add-btn">
-        <button class="add-to-cart" data-product-id="{{ product.id }}">
-          Ajouter au panier
-        </button>
+
+    {% for message in app.flashes('success') %}
+      <div class="flash-message success">
+        <p>{{ message }}</p>
       </div>
-    
+    {% endfor %}
+
+    <div class="add-btn">
+      <form
+        action="{{ path('add_to_cart', { id: product.id }) }}"
+        method="POST"
+      >
+        <button type="submit" class="add-to-cart">Ajouter au panier</button>
+      </form>
+    </div>
   </div>
+  
 </div>
 {% endblock %}

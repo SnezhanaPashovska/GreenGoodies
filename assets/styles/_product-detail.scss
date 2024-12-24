@@ -72,20 +72,38 @@
   .add-btn {
     width: 80%;
 
-    button {
+    .add-to-cart {
       width: 100%;
       height: 77px;
       background-color: $gray-color;
       color: white;
       justify-self: baseline;
       border: 1px solid transparent;
+      text-decoration: none;
     
       cursor: pointer;
 
       &:hover {
         background-color: $form-label-color;
       }
-    }
-    
+    } 
   }
+  .flash-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.flash-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
 }

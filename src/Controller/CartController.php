@@ -41,7 +41,6 @@ class CartController extends AbstractController
 
         // Return back same page
         return $this->redirectToRoute('app_product_detail', ['id' => $id]);
-
     }
 
     #[Route('/cart', name: 'view_cart')]
@@ -84,6 +83,7 @@ class CartController extends AbstractController
         return $this->render('cart/cart.html.twig', [
             'products' => $products,
             'total' => $total,
+            'cart' => $cart,
         ]);
     }
 
@@ -93,7 +93,7 @@ class CartController extends AbstractController
         $session = $request->getSession();
         $session->remove('cart');
 
-        $this->addFlash('success', 'Le panier a été vidé.');
+        $this->addFlash('info', 'Le panier a été vidé.');
         return $this->redirectToRoute('view_cart');
     }
 }
