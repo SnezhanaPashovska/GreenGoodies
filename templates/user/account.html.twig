@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %} {% block title %}Green Goodies | Mon Compte{%
+endblock %} {% block body %}
+
+<div class="account-container">
+  <h1>Mon Compte</h1>
+  <div class="account">
+    <div class="orders">
+      <p>Mes commandes</p>
+
+      <div class="orders-list">
+        <table>
+          <thead>
+            <tr>
+              <th>N°</th>
+              <th>Date</th>
+              <th>Prix</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>323564</td>
+              <td>26/11/1989</td>
+              <td>11100€</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="content-api">
+      <h2>Mon accès API</h2>
+      <form action="" method="">
+        <input
+          type="submit"
+          class="btn-connect"
+          value="Activer mon accès API"
+        />
+      </form>
+    </div>
+    <div class="delete-account">
+      <button class="btn-delete">Supprimer mon compte</button>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

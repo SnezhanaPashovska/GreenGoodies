@@ -600,4 +600,115 @@ footer {
   background-color: #666666;
 }
 
+.account-container {
+  background-color: #f7f1ec;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 140vh;
+}
+.account-container .account {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  min-height: 500px;
+  margin-top: 50px;
+}
+.account-container h1 {
+  font-weight: 200;
+  text-align: center;
+  font-size: 23px;
+  margin-top: -30px;
+}
+.account-container .orders {
+  display: flex;
+  flex-direction: column;
+  background-color: #fffdf7;
+}
+.account-container .orders p {
+  margin: 60px 0px 20px 50px;
+  font-weight: 600;
+}
+.account-container .orders .orders-list {
+  border-bottom: 1px solid #cccccc;
+  display: block;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 0px 25px 0px;
+  margin-bottom: 10px;
+}
+.account-container .orders table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.account-container .orders th {
+  padding: 20px 0;
+  width: 48%;
+  text-align: left;
+  font-weight: 200;
+  opacity: 0.6;
+  font-size: 14px;
+}
+.account-container .orders td {
+  padding: 10px 0;
+  text-align: left;
+  font-size: 14px;
+}
+.account-container .content-api {
+  margin-top: 20px;
+  background-color: #fffdf7;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.account-container .content-api h2 {
+  font-size: 14px;
+  margin-bottom: 30px;
+  text-align: left;
+  width: 85%;
+}
+.account-container .btn-connect {
+  width: 100%;
+  height: 77px;
+  align-self: center;
+  background-color: #565656;
+  color: white;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.account-container .btn-connect:hover {
+  background-color: #666666;
+}
+.account-container form {
+  width: 85%;
+}
+.account-container .delete-account {
+  margin: 20px 0px 50px 0px;
+  background-color: #fffdf7;
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.account-container .delete-account button {
+  width: 85%;
+  height: 77px;
+  align-self: center;
+  background-color: #565656;
+  color: white;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.account-container .delete-account button:hover {
+  background-color: #666666;
+}
+
 /*# sourceMappingURL=app.css.map */
