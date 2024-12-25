@@ -37,14 +37,13 @@ class Product
     private ?string $shortDescription = null;
 
     /**
-     * @var Collection<int, Order>
+     * @ORM\OneToMany(targetEntity="App\Entity\OrderProduct", mappedBy="product")
      */
-    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'productId')]
-    private Collection $orders;
+    private $orderProducts;
 
     public function __construct()
     {
-        $this->orders = new ArrayCollection();
+        $this->orderProducts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -113,29 +112,33 @@ class Product
     }
 
     /**
-     * @return Collection<int, Order>
+     * @return Collection<int, OrderProduct>
      */
-    public function getOrders(): Collection
+    public function getOrderProducts(): Collection
     {
-        return $this->orders;
+        return $this->orderProducts;
     }
 
-    public function addOrder(Order $order): static
+    public function addOrderProduct(OrderProduct $orderProduct): static
     {
-        if (!$this->orders->contains($order)) {
-            $this->orders->add($order);
-            $order->addProduct($this);
+        if (!$this->orderProducts->contains($orderProduct)) {
+            $this->orderProducts->add($orderProduct);
+            $orderProduct->setProduct($this);
         }
 
         return $this;
     }
 
-    public function removeOrder(Order $order): static
+    public function removeOrderProduct(OrderProduct $orderProduct): static
     {
-        if ($this->orders->removeElement($order)) {
-            $order->removeProduct($this);
+        if ($this->orderProducts->removeElement($orderProduct)) {
+            // set the owning side to null (unless already changed)
+            if ($orderProduct->getProduct() === $this) {
+                $orderProduct->setProduct(null);
+            }
         }
 
         return $this;
     }
 }
+

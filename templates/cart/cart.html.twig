@@ -32,7 +32,9 @@ endblock %} {% block body %}
       <p class="delivery">Frais de livraison : Offert</p>
     </div>
     <div class="checkout">
-      <button class="checkout-btn">Valider la commande</button>
+      <form action="{{ path('order_create') }}" method="POST">
+        <button type="submit" class="checkout-btn">Valider la commande</button>
+    </form>
     </div>
     {% else %}
     <p class="empty">Votre panier est vide.</p>

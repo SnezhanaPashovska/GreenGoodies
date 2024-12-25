@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %} {% block title %}Order Successful{% endblock %}
+{% block body %}
+<div class="order-success-container">
+  <h1>Your order has been placed successfully!</h1>
+  <p>
+    Thank you for your purchase. You can view your order history in your
+    account.
+  </p>
+  <a href="{{ path('app_account') }}" class="btn btn-primary">View My Orders</a>
+</div>
+{% endblock %}

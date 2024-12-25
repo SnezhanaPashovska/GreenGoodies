@@ -20,22 +20,20 @@ class Order
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $orderDate = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
+    #[ORM\Column(type : Types::DECIMAL, precision: 10, scale: 2)]
     private ?string $totalAmount = null;
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    /**
-     * @var Collection<int, Product>
-     */
-    #[ORM\ManyToMany(targetEntity: Product::class, inversedBy: 'orders')]
-    private Collection $products;
+    // OrderProducts collection that links Order and Product with quantity
+    #[ORM\OneToMany(mappedBy: 'order', targetEntity: OrderProduct::class)]
+    private Collection $orderProducts;
 
     public function __construct()
     {
-        $this->products = new ArrayCollection();
+        $this->orderProducts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -80,25 +78,39 @@ class Order
     }
 
     /**
-     * @return Collection<int, Product>
+     * Get all the products associated with this order (through OrderProduct entity).
+     *
+     * @return Collection<int, OrderProduct>
      */
-    public function getProducts(): Collection
+    public function getOrderProducts(): Collection
     {
-        return $this->products;
+        return $this->orderProducts;
     }
 
-    public function addProduct(Product $product): static
+    /**
+     * Add an OrderProduct, which contains product and quantity information for the order.
+     */
+    public function addOrderProduct(OrderProduct $orderProduct): static
     {
-        if (!$this->products->contains($product)) {
-            $this->products->add($product);
+        if (!$this->orderProducts->contains($orderProduct)) {
+            $this->orderProducts->add($orderProduct);
+            $orderProduct->setOrder($this); // Link back to this order
         }
 
         return $this;
     }
 
-    public function removeProduct(Product $product): static
+    /**
+     * Remove an OrderProduct from this order.
+     */
+    public function removeOrderProduct(OrderProduct $orderProduct): static
     {
-        $this->products->removeElement($product);
+        if ($this->orderProducts->removeElement($orderProduct)) {
+            // set the owning side to null (unless already changed)
+            if ($orderProduct->getOrder() === $this) {
+                $orderProduct->setOrder(null);
+            }
+        }
 
         return $this;
     }
