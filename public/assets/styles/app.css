@@ -522,7 +522,7 @@ footer {
   font-size: 23px;
   margin-top: 70px;
 }
-.cart-container .cart form button {
+.cart-container .cart form .clear-cart-btn {
   text-decoration: none;
   color: black;
   opacity: 0.6;
@@ -531,7 +531,7 @@ footer {
   background-color: #f7f1ec;
   cursor: pointer;
 }
-.cart-container .cart form button:hover {
+.cart-container .cart form .clear-cart-btn:hover {
   color: black;
   opacity: 1;
 }
@@ -598,6 +598,7 @@ footer {
 }
 .cart-container .checkout .checkout-btn:hover {
   background-color: #666666;
+  color: white;
 }
 
 .account-container {
@@ -610,7 +611,7 @@ footer {
   min-height: 140vh;
 }
 .account-container .account {
-  width: 50%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   min-height: 500px;
@@ -620,7 +621,7 @@ footer {
   font-weight: 200;
   text-align: center;
   font-size: 23px;
-  margin-top: -30px;
+  margin-top: 30px;
 }
 .account-container .orders {
   display: flex;
@@ -631,31 +632,40 @@ footer {
   margin: 60px 0px 20px 50px;
   font-weight: 600;
 }
-.account-container .orders .orders-list {
+.account-container .orders table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  display: flex;
+  flex-direction: column;
+}
+.account-container .orders th, .account-container .orders td {
+  padding: 10px;
+  text-align: left;
+  font-size: 14px;
+  width: 200px;
+}
+.account-container .orders th {
+  font-weight: 200;
+  opacity: 0.6;
+  font-size: 14px;
+}
+.account-container .orders th:nth-child(3), .account-container .orders td:nth-child(3) {
+  text-align: left;
+  /* Align the "Prix" column to the right */
+  width: 15%;
+}
+.account-container .orders td {
   border-bottom: 1px solid #cccccc;
+  margin-bottom: 10px;
+}
+.account-container .orders tr {
   display: block;
   width: 85%;
   margin-left: auto;
   margin-right: auto;
   padding: 10px 0px 25px 0px;
   margin-bottom: 10px;
-}
-.account-container .orders table {
-  width: 100%;
-  border-collapse: collapse;
-}
-.account-container .orders th {
-  padding: 20px 0;
-  width: 48%;
-  text-align: left;
-  font-weight: 200;
-  opacity: 0.6;
-  font-size: 14px;
-}
-.account-container .orders td {
-  padding: 10px 0;
-  text-align: left;
-  font-size: 14px;
 }
 .account-container .content-api {
   margin-top: 20px;
@@ -709,6 +719,29 @@ footer {
 }
 .account-container .delete-account button:hover {
   background-color: #666666;
+}
+.account-container .pagination {
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.account-container .pagination .current {
+  color: #497555;
+  padding: 2px 2px 2px 6px;
+  margin-right: 5px;
+  text-align: center;
+}
+.account-container .pagination .page {
+  padding: 2px 2px 2px 6px;
+  margin-right: 5px;
+  text-align: center;
+  border: 1px solid lightgray;
+}
+.account-container .pagination a {
+  color: black;
+  opacity: 0.6;
+  text-decoration: none;
+  text-align: center;
 }
 
 /*# sourceMappingURL=app.css.map */

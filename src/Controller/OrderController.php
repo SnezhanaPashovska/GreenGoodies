@@ -6,7 +6,9 @@ use App\Entity\Order;
 use App\Entity\OrderProduct;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Attribute\Route;
@@ -74,4 +76,6 @@ class OrderController extends AbstractController
     {
         return $this->render('order/order-successful.html.twig');
     }
+
+    
 }
