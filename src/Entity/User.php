@@ -47,7 +47,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(nullable: true)]
     #[Groups('user')]
-    private ?bool $apiAccess = null;
+    private ?bool $apiAccess = false;
 
     /**
      * @var Collection<int, Order>

@@ -32,15 +32,31 @@ endblock %} {% block body %}
         </div>
       </div>
     </div>
+
     <div class="content-api">
       <h2>Mon accès API</h2>
-      <form action="" method="">
+      {% if app.user and app.user.apiAccess %}
+      <form action="{{ path('deactivate_api') }}" method="post">
+        <input
+          type="submit"
+          class="btn-connect"
+          value="Desactiver mon accès API"
+        />
+      </form>
+      {% else %}
+      <form action="{{ path('activate_api') }}" method="post">
         <input
           type="submit"
           class="btn-connect"
           value="Activer mon accès API"
         />
       </form>
+      {% endif %}
+      {% for message in app.flashes('success') %}
+      <div class="alert alert-success">
+        {{ message }}
+      </div>
+      {% endfor %}
     </div>
     <div class="delete-account">
       <button class="btn-delete">Supprimer mon compte</button>

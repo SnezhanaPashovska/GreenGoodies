@@ -485,6 +485,13 @@ footer {
 .product-detail-container .add-btn .add-to-cart:hover {
   background-color: #666666;
 }
+.product-detail-container .add-btn a {
+  justify-self: center;
+  color: black;
+}
+.product-detail-container .add-btn a:hover {
+  color: #497555;
+}
 .product-detail-container .flash-message.success {
   background-color: #d4edda;
   color: #155724;

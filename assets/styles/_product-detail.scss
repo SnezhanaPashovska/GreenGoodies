@@ -87,6 +87,15 @@
         background-color: $form-label-color;
       }
     } 
+
+    a{
+      justify-self: center;
+      color: black;
+    }
+
+    a:hover {
+      color: $primary-color;
+    }
   }
   .flash-message.success {
     background-color: #d4edda;

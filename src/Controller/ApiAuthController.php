@@ -38,7 +38,6 @@ class ApiAuthController extends AbstractController
         if (!$token) {
             return new JsonResponse(['message' => 'Failed to generate token'], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
         }
-        dump($token);
         
 
         return new JsonResponse(['token' => $token], JsonResponse::HTTP_OK);

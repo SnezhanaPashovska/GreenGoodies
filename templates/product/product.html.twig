@@ -14,21 +14,26 @@ endblock %} {% block body %}
       <p class="description">{{ product.description | nl2br }}</p>
     </div>
 
-    {% for message in app.flashes('success') %}
-      <div class="flash-message success">
-        <p>{{ message }}</p>
-      </div>
+    {% for message in app.flashes('product') %}
+    <div class="flash-message success">
+      <p>{{ message }}</p>
+    </div>
     {% endfor %}
 
     <div class="add-btn">
+      {% if is_granted('IS_AUTHENTICATED_FULLY') %}
       <form
         action="{{ path('add_to_cart', { id: product.id }) }}"
         method="POST"
       >
         <button type="submit" class="add-to-cart">Ajouter au panier</button>
       </form>
+      {% else %}
+      <p>Vous devez être <a href="{{ path('app_login') }}" class="connect-btn"
+        >connecté(e)</a
+      > pour ajouter ce produit au panier. </p>
+      {% endif %}
     </div>
   </div>
-  
 </div>
 {% endblock %}
