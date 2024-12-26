@@ -3,28 +3,33 @@
 namespace App\Controller;
 
 use App\Entity\Order;
+use App\Entity\User;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Attribute\Route;
-
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class UserController extends AbstractController
 {
-    private $entityManager;
+    private EntityManagerInterface $entityManager;
+    private UserRepository $userRepository;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(EntityManagerInterface $entityManager, UserRepository $userRepository)
     {
         $this->entityManager = $entityManager;
+        $this->userRepository = $userRepository;
     }
 
     #[Route('/account', name: 'app_account')]
-    public function account(EntityManagerInterface $entityManager, PaginatorInterface $paginator, Request $request, ): Response
+    public function account(PaginatorInterface $paginator, Request $request, ): Response
     {
         $user = $this->getUser();
-        $orders = $entityManager->getRepository(Order::class)->findBy(
+        $orders = $this->entityManager->getRepository(Order::class)->findBy(
             ['user' => $user],
             ['orderDate' => 'DESC']
         );
@@ -38,6 +43,7 @@ class UserController extends AbstractController
         return $this->render('user/account.html.twig', [
             'orders' => $orders,
             'pagination' => $pagination,
+            'user' => $user,
         ]);
     }
 
@@ -58,7 +64,7 @@ class UserController extends AbstractController
     }
 
     #[Route('/deactivate-api', name: 'deactivate_api')]
-    public function deactivateApi(EntityManagerInterface $entityManager): Response
+    public function deactivateApi(): Response
     {
         $user = $this->getUser();
 
@@ -74,4 +80,20 @@ class UserController extends AbstractController
         return $this->redirectToRoute('app_account');
     }
 
+    #[Route('/delete-account/{id}', name: 'delete_account', methods: ['POST'])]
+    public function deleteAccount(int $id, Request $request, SessionInterface $session, TokenStorageInterface $tokenStorage): Response
+    {
+        $user = $this->entityManager->getRepository(User::class)->find($id);
+
+        if ($user) {
+
+            $session->invalidate();
+            $tokenStorage->setToken(null);
+
+            $this->entityManager->remove($user);
+            $this->entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_home');
+    }
 }

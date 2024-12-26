@@ -38,29 +38,3 @@
 		</div>
 
 	{% endblock %}
-
-	{# {% if error %}
-					<div class="error-login">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-				{% endif %}
-	
-			
-				<div class="form">
-					<form action="{{ path('app_login') }}" method="post">
-						<div class="form-group">
-							<label for="email">Email :</label>
-							<input type="email" id="email" name="email" value="{{ email|default('') }}">
-						</div>
-						<div class="form-group">
-							<label for="password">Mot de passe :</label>
-							<input type="password" id="password" name="password">
-						</div>
-						<button type="submit" class="button-continue">Se connecter</button>
-					</div>
-					
-	
-					<div class="register-account">
-						<a href="{{ path('app_register') }}">Pas encore de compte ? S’inscrire</a>
-					</div>
-				</div>
-			</div>
-	 -> #}

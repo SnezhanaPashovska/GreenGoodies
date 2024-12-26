@@ -51,9 +51,6 @@ security:
         # Restrict /account to logged-in users only
           - { path: ^/account, roles: IS_AUTHENTICATED_FULLY }
 
-        #  - { path: ^/product, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        #  - { path: ^/product/\d+, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        #  - { path: ^/, roles: ROLE_USER }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 

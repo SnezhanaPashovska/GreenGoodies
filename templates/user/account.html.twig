@@ -51,15 +51,19 @@ endblock %} {% block body %}
           value="Activer mon accès API"
         />
       </form>
-      {% endif %}
-      {% for message in app.flashes('success') %}
+      {% endif %} {% for message in app.flashes('success') %}
       <div class="alert alert-success">
         {{ message }}
       </div>
       {% endfor %}
     </div>
     <div class="delete-account">
-      <button class="btn-delete">Supprimer mon compte</button>
+      <form
+        action="{{ path('delete_account', { id: user.id }) }}"
+        method="post"
+      >
+        <button class="btn-delete">Supprimer mon compte</button>
+      </form>
     </div>
   </div>
 </div>

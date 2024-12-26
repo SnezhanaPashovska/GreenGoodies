@@ -694,13 +694,13 @@ footer {
   width: 100%;
   height: 77px;
   align-self: center;
-  background-color: #565656;
+  background-color: black;
   color: white;
   border: 1px solid transparent;
   cursor: pointer;
 }
 .account-container .btn-connect:hover {
-  background-color: #666666;
+  background-color: #565656;
 }
 .account-container form {
   width: 85%;
@@ -716,16 +716,16 @@ footer {
   width: 100%;
 }
 .account-container .delete-account button {
-  width: 85%;
+  width: 100%;
   height: 77px;
   align-self: center;
-  background-color: #565656;
+  background-color: black;
   color: white;
   border: 1px solid transparent;
   cursor: pointer;
 }
 .account-container .delete-account button:hover {
-  background-color: #666666;
+  background-color: #565656;
 }
 .account-container .pagination {
   justify-content: center;
