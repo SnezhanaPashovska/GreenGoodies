@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
@@ -22,6 +23,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 180)]
     #[Groups('user')]
+    #[Assert\NotBlank]
+    #[Assert\Email]
     private ?string $email = null;
 
     /**
@@ -35,14 +38,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     #[Groups('user')]
+    #[Assert\NotBlank]
+    #[Assert\Length(
+        min: 8,
+        minMessage: 'Le mot de passe doit contenir au moins {{ limit }} caractères.'
+    )]
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]
     #[Groups('user')]
+    #[Assert\NotBlank]
     private ?string $firstname = null;
 
     #[ORM\Column(length: 255)]
     #[Groups('user')]
+    #[Assert\NotBlank]
     private ?string $lastname = null;
 
     #[ORM\Column(nullable: true)]
