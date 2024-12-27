@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,29 +13,36 @@ class CartController extends AbstractController
 {
 
     #[Route('/cart/add/{id}', name: 'add_to_cart', methods: ['POST'])]
-    public function addToCart(int $id, Request $request, Product $product)
+    public function addToCart(int $id, Request $request, Product $product, ProductRepository $productRepository)
     {
         // Get the session
         $session = $request->getSession();
+
         // Get the current cart
         $cart = $session->get('cart', []);
 
+        // Find the product by ID
+        $product = $productRepository->find($id);
+
         // Add the product in the cart or increase if it is already in the cart
-        if (isset($cart[$product->getId()])) {
-            $cart[$product->getId()]['quantity']++;
+        if ($product) {
+            if (isset($cart[$product->getId()])) {
+                $cart[$product->getId()]['quantity']++;
+            } else {
+                $cart[$product->getId()] = [
+                    'id' => $product->getId(),
+                    'name' => $product->getName(),
+                    'price' => $product->getPrice(),
+                    'image' => $product->getImage(),
+                    'quantity' => 1,
+                ];
+            }
+
+            // Save the updated cart to session
+            $session->set('cart', $cart);
         } else {
-            $cart[$product->getId()] = [
-                'id' => $product->getId(),
-                'name' => $product->getName(),
-                'price' => $product->getPrice(),
-                'image' => $product->getImage(),
-                'quantity' => 1,
-            ];
+            $this->addFlash('error', 'Produit introuvable');
         }
-
-        // Save the updated cart to session
-
-        $session->set('cart', $cart);
 
         //Message
         $this->addFlash('product', 'Produit ajouté au panier avec succès');

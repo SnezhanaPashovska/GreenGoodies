@@ -80,11 +80,12 @@
       justify-self: baseline;
       border: 1px solid transparent;
       text-decoration: none;
-    
       cursor: pointer;
+      transition: all 0.3s ease;
 
       &:hover {
-        background-color: $form-label-color;
+        background-color: black;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
     } 
 
@@ -114,5 +115,6 @@
     border-radius: 5px;
     margin-bottom: 20px;
 }
+
 
 }

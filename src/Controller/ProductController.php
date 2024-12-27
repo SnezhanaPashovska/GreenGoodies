@@ -2,19 +2,24 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
 use App\Repository\ProductRepository;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class ProductController extends AbstractController
 {
     private $productRepository;
+    private $entityManager;
 
-    public function __construct(ProductRepository $productRepository)
+    public function __construct(ProductRepository $productRepository, EntityManagerInterface $entityManager)
     {
         $this->productRepository = $productRepository;
+        $this->entityManager = $entityManager;
     }
 
     #[Route('/product', name: 'app_product_list')]
@@ -28,17 +33,22 @@ class ProductController extends AbstractController
     }
 
     #[Route('/product/{id}', name: 'app_product_detail')]
-    public function showProductDetail(int $id, ProductRepository $productRepository): Response
+    public function showProductDetail(int $id, ProductRepository $productRepository, Request $request, EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
 
-        $product = $productRepository->find($id);
+        $product = $this->productRepository->find($id);
 
         if (!$product) {
             throw $this->createNotFoundException('Product not found');
         }
 
+        $cart = $session->get('cart', []);
+
+        $quantityInCart = isset($cart[$product->getId()]) ? $cart[$product->getId()]['quantity'] : 0;
+
         return $this->render('product/product.html.twig', [
             'product' => $product,
+            'quantityInCart' => $quantityInCart,
         ]);
     }
 }

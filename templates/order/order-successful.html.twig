@@ -1,11 +1,10 @@
-{% extends 'base.html.twig' %} {% block title %}Order Successful{% endblock %}
+{% extends 'base.html.twig' %} {% block title %}Green Goodies | Order Successful{% endblock %}
 {% block body %}
 <div class="order-success-container">
-  <h1>Your order has been placed successfully!</h1>
+  <h1>Votre commande a été passée avec succès !</h1>
   <p>
-    Thank you for your purchase. You can view your order history in your
-    account.
+    Merci pour votre achat ! Vous pouvez consulter l'historique de vos commandes dans votre compte.
   </p>
-  <a href="{{ path('app_account') }}" class="btn btn-primary">View My Orders</a>
+  <a href="{{ path('app_account') }}" class="see-orders">Voir mes commandes</a>
 </div>
 {% endblock %}

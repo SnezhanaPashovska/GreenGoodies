@@ -26,7 +26,7 @@ class UserController extends AbstractController
     }
 
     #[Route('/account', name: 'app_account')]
-    public function account(PaginatorInterface $paginator, Request $request, ): Response
+    public function account(PaginatorInterface $paginator, Request $request): Response
     {
         $user = $this->getUser();
         $orders = $this->entityManager->getRepository(Order::class)->findBy(
@@ -72,7 +72,7 @@ class UserController extends AbstractController
             $user->setApiAccess(false);
 
             // Persist the changes
-            $entityManager->flush();
+            $this->entityManager->flush();
 
             $this->addFlash('success', 'L\'accès à l\'API a été désactivé avec succès !');
         }
