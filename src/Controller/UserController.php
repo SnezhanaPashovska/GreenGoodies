@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Order;
 use App\Entity\User;
-use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,16 +13,33 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
+/**
+ * Controller for managing user account-related actions.
+ */
+
 class UserController extends AbstractController
 {
     private EntityManagerInterface $entityManager;
-    private UserRepository $userRepository;
 
-    public function __construct(EntityManagerInterface $entityManager, UserRepository $userRepository)
+    /**
+     * UserController constructor.
+     * 
+     * @param EntityManagerInterface $entityManager The entity manager used to interact with the database.
+     */
+
+    public function __construct(EntityManagerInterface $entityManager)
     {
         $this->entityManager = $entityManager;
-        $this->userRepository = $userRepository;
     }
+
+    /**
+     * Displays the user's account page with their orders.
+     *
+     * @param PaginatorInterface $paginator The paginator service for pagination.
+     * @param Request $request The HTTP request object.
+     *
+     * @return Response The response object containing the rendered account page.
+     */
 
     #[Route('/account', name: 'app_account')]
     public function account(PaginatorInterface $paginator, Request $request): Response
@@ -47,6 +63,12 @@ class UserController extends AbstractController
         ]);
     }
 
+    /**
+     * Activates API access for the current user.
+     *
+     * @return Response The response object redirecting back to the account page with a success flash message.
+     */
+
     #[Route('/activate-api', name: 'activate_api')]
     public function activateApi(): Response
     {
@@ -62,6 +84,12 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('app_account');
     }
+
+    /**
+     * Deactivates API access for the current user.
+     *
+     * @return Response The response object redirecting back to the account page with a success flash message.
+     */
 
     #[Route('/deactivate-api', name: 'deactivate_api')]
     public function deactivateApi(): Response
@@ -79,6 +107,17 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('app_account');
     }
+
+    /**
+     * Deletes the user's account and logs them out.
+     *
+     * @param int $id The ID of the user to delete.
+     * @param Request $request The HTTP request object.
+     * @param SessionInterface $session The session service to invalidate the session.
+     * @param TokenStorageInterface $tokenStorage The token storage service to invalidate the authentication token.
+     *
+     * @return Response The response object redirecting to the home page after account deletion.
+     */
 
     #[Route('/delete-account/{id}', name: 'delete_account', methods: ['POST'])]
     public function deleteAccount(int $id, Request $request, SessionInterface $session, TokenStorageInterface $tokenStorage): Response

@@ -8,6 +8,13 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
+/**
+ * Represents a product in the store.
+ * Contains attributes like name, description, price, image, etc.
+ *
+ * @ORM\Entity(repositoryClass=ProductRepository::class)
+ */
+
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
 {
@@ -37,8 +44,11 @@ class Product
     private ?string $shortDescription = null;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\OrderProduct", mappedBy="product")
+     * The associated OrderProducts.
+     * 
+     * @var Collection<int, OrderProduct>
      */
+
     private $orderProducts;
 
     public function __construct()
@@ -141,4 +151,3 @@ class Product
         return $this;
     }
 }
-

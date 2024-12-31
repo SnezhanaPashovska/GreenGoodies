@@ -10,8 +10,27 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
+/**
+ * Controller for handling user authentication via API.
+ */
+
 class ApiAuthController extends AbstractController
 {
+    /**
+     * Login function to authenticate the user via email and password.
+     *
+     * This method processes the login request, checks for valid credentials, verifies if the user
+     * has API access enabled, and generates a JWT token if everything is correct.
+     *
+     * @param Request $request The HTTP request object containing user credentials.
+     * @param UserRepository $userRepository The repository to fetch user data.
+     * @param UserPasswordHasherInterface $passwordHasher The service to verify the hashed password.
+     * @param JWTTokenManagerInterface $jwtManager The service used to create JWT tokens.
+     *
+     * @return JsonResponse The response containing either an error message or the generated JWT token.
+     * 
+     */
+
     #[Route('/api/login', name: 'api_login', methods: [Request::METHOD_POST])]
     public function login(
         Request $request,
@@ -38,12 +57,11 @@ class ApiAuthController extends AbstractController
         }
 
         $token = $jwtManager->create($user);
-        
+
         if (!$token) {
             return new JsonResponse(['message' => 'Failed to generate token'], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
         }
 
         return new JsonResponse(['token' => $token], JsonResponse::HTTP_OK);
-  
     }
 }

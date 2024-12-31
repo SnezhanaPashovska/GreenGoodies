@@ -8,6 +8,13 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Represents an order placed by a user.
+ *
+ * @ORM\Entity(repositoryClass=OrderRepository::class)
+ * @ORM\Table(name="orders")
+ */
+
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
 #[ORM\Table(name: 'orders')]
 class Order
@@ -27,7 +34,12 @@ class Order
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
-    // OrderProducts collection that links Order and Product with quantity
+    /**
+     * The products associated with this order (through the OrderProduct entity).
+     *
+     * @ORM\OneToMany(mappedBy="order", targetEntity=OrderProduct::class)
+     */
+
     #[ORM\OneToMany(mappedBy: 'order', targetEntity: OrderProduct::class)]
     private Collection $orderProducts;
 

@@ -6,28 +6,35 @@ use App\Entity\Order;
 use App\Entity\OrderProduct;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
+/**
+ * Controller for managing orders.
+ */
 class OrderController extends AbstractController
 {
+    /**
+     * Creates a new order based on the current cart in the session and stores it in the database.
+     *
+     * @param EntityManagerInterface $entityManager The Doctrine entity manager used for persisting data.
+     * @param SessionInterface $session The session to retrieve the cart and clear it afterward.
+     * @param ProductRepository $productRepository The repository to fetch product data from the database.
+     *
+     * @return Response Redirects to the order success page after the order is created.
+     */
+
     #[Route('/order/create', name: 'order_create')]
     public function createOrder(EntityManagerInterface $entityManager, SessionInterface $session, ProductRepository $productRepository): Response
     {
-        // Retrieve the cart from the session
         $cart = $session->get('cart', []);
         $totalAmount = 0;
 
-        // Extract product IDs from the cart
         $productIds = array_keys($cart);
 
-        // Retrieve products from the database based on product IDs
         $products = $productRepository->findBy(['id' => $productIds]);
-        //Create an order
         $order = new Order();
         $order->setUser($this->getUser());
         $order->setOrderDate(new \DateTime());
@@ -60,7 +67,6 @@ class OrderController extends AbstractController
                 }
             }
         }
-        // Set the total amount after all products are processed
         $order->setTotalAmount((string) $totalAmount);
 
         $entityManager->persist($order);
@@ -71,11 +77,15 @@ class OrderController extends AbstractController
         return $this->redirectToRoute('order_success');
     }
 
+    /**
+     * Displays the order success page.
+     *
+     * @return Response The rendered order success page.
+     */
+
     #[Route('/order/success', name: 'order_success')]
     public function orderSuccess(): Response
     {
         return $this->render('order/order-successful.html.twig');
     }
-
-    
 }

@@ -4,6 +4,12 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * Represents the association between an Order and a Product with a specified quantity.
+ *
+ * @ORM\Entity
+ */
+
 #[ORM\Entity]
 class OrderProduct
 {
@@ -25,7 +31,6 @@ class OrderProduct
      */
     private int $quantity;
 
-    // Getters and Setters
 
     public function getId(): ?int
     {

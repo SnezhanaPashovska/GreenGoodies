@@ -9,22 +9,34 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
+/**
+ * Controller for managing the cart.
+ */
+
 class CartController extends AbstractController
 {
+
+    /**
+     * Adds a product to the cart or increases its quantity if already in the cart.
+     *
+     * @param int $id The product ID.
+     * @param Request $request The HTTP request.
+     * @param Product $product The product entity.
+     * @param ProductRepository $productRepository The product repository.
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse Redirects to the product detail page.
+     */
 
     #[Route('/cart/add/{id}', name: 'add_to_cart', methods: ['POST'])]
     public function addToCart(int $id, Request $request, Product $product, ProductRepository $productRepository)
     {
-        // Get the session
+
         $session = $request->getSession();
 
-        // Get the current cart
         $cart = $session->get('cart', []);
 
-        // Find the product by ID
         $product = $productRepository->find($id);
 
-        // Add the product in the cart or increase if it is already in the cart
         if ($product) {
             if (isset($cart[$product->getId()])) {
                 $cart[$product->getId()]['quantity']++;
@@ -38,35 +50,37 @@ class CartController extends AbstractController
                 ];
             }
 
-            // Save the updated cart to session
             $session->set('cart', $cart);
         } else {
             $this->addFlash('error', 'Produit introuvable');
         }
 
-        //Message
         $this->addFlash('product', 'Produit ajouté au panier avec succès');
 
-        // Return back same page
         return $this->redirectToRoute('app_product_detail', ['id' => $id]);
     }
+
+    /**
+     * Displays the products in the cart and calculates the total price.
+     *
+     * @param Request $request The HTTP request.
+     * @param EntityManagerInterface $entityManager The entity manager to fetch product data.
+     *
+     * @return \Symfony\Component\HttpFoundation\Response The rendered cart template.
+     */
 
     #[Route('/cart', name: 'view_cart')]
     public function viewCart(Request $request, EntityManagerInterface $entityManager)
     {
-        // Get the session
         $session = $request->getSession();
 
-        // Get the cart from the session
         $cart = $session->get('cart', []);
 
-        // Fetch the product details from the db
         $products = [];
 
         foreach ($cart as $item) {
             $product = $entityManager->getRepository(Product::class)->find($item['id']);
 
-            // If the product exists, add it to the products array with the quantity
             if ($product) {
                 $products[] = [
                     'product' => $product,
@@ -75,25 +89,29 @@ class CartController extends AbstractController
             }
         }
 
-        // Total price
-
         $total = 0;
         foreach ($products as $item) {
             $total += $item['product']->getPrice() * $item['quantity'];
         }
 
-        // If cart is empty
         if (empty($products)) {
             $this->addFlash('info', 'Votre panier est vide.');
         }
 
-        // Render a template to display the cart
         return $this->render('cart/cart.html.twig', [
             'products' => $products,
             'total' => $total,
             'cart' => $cart,
         ]);
     }
+
+    /**
+     * Clears the cart from the session.
+     *
+     * @param Request $request The HTTP request.
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse Redirects to the cart page.
+     */
 
     #[Route('/cart/clear', name: 'clear_cart', methods: ['POST'])]
     public function clearCart(Request $request)
