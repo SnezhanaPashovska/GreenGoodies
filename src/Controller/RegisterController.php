@@ -29,13 +29,14 @@ class RegisterController extends AbstractController
             // Hash the password
             $hashedPassword = $passwordHasher->hashPassword($user, $user->getPassword());
             $user->setPassword($hashedPassword);
+            $user->setRoles(['ROLE_USER']);
 
             // Persist and flush the user entity
             $entityManager->persist($user);
             $entityManager->flush();
 
             // Redirect to the login with a success message
-            $this->addFlash('success', 'Registration successful! You can now log in.');
+            $this->addFlash('register', 'Registration successful! You can now log in.');
             return $this->redirectToRoute('app_login');
         }
 

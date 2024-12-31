@@ -55,7 +55,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotBlank]
     private ?string $lastname = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(name: 'api_access', type: 'boolean', nullable: true)]
     #[Groups('user')]
     private ?bool $apiAccess = false;
 

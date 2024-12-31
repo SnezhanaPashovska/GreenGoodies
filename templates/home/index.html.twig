@@ -16,7 +16,7 @@ block body %}
     </div>
     <div class="welcome-container_photo">
       <img
-        src="{{ asset('images/homepage-photo.svg') }}"
+        src="{{ asset('images/Mask-group.png') }}"
         alt="A photo of a chair with a transparent"
       />
     </div>
@@ -29,7 +29,7 @@ block body %}
     <div class="our-products_card">
       <div class="image-frame">
       <img
-        src="{{ product.image }}"
+        src="{{ asset('images/' ~ product.image) }}"
         alt="{{ product.name }}"
         class="product-card_photo"
       />
@@ -57,12 +57,12 @@ block body %}
           </p>
         </div>
         <div class="conviction-values-container_conviction_image">
-          <img src="{{ asset('images/branch.svg') }}" alt="" />
+          <img src="{{ asset('images/branches.jpg') }}" alt="" />
         </div>
       </div>
       <div class="conviction-values-container_values">
         <div class="conviction-values-container_values_image">
-          <img src="{{ asset('images/green-bag.svg') }}" alt="" />
+          <img src="{{ asset('images/trash.jpg') }}" alt="" />
         </div>
         <div class="conviction-values-container_values_text">
           <h3>NOS VALEURS</h3>

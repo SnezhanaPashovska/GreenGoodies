@@ -3,7 +3,7 @@ endblock %} {% block body %}
 <div class="product-detail-container">
   <div class="detail-image">
     <div class="image-frame">
-      <img src="{{ product.image }}" alt="{{ product.image }}" />
+      <img src="{{ asset('images/' ~ product.image) }}" alt="{{ product.image }}" />
     </div>
   </div>
   <div class="product-details">

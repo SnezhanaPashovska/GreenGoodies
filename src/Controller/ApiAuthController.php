@@ -13,9 +13,12 @@ use Symfony\Component\Routing\Attribute\Route;
 class ApiAuthController extends AbstractController
 {
     #[Route('/api/login', name: 'api_login', methods: [Request::METHOD_POST])]
-    public function login(Request $request, UserRepository $userRepository,
+    public function login(
+        Request $request,
+        UserRepository $userRepository,
         UserPasswordHasherInterface $passwordHasher,
-        JWTTokenManagerInterface $jwtManager): JsonResponse {
+        JWTTokenManagerInterface $jwtManager
+    ): JsonResponse {
         $data = json_decode($request->getContent(), true);
         $email = $data['email'] ?? null;
         $password = $data['password'] ?? null;
@@ -35,11 +38,12 @@ class ApiAuthController extends AbstractController
         }
 
         $token = $jwtManager->create($user);
+        
         if (!$token) {
             return new JsonResponse(['message' => 'Failed to generate token'], JsonResponse::HTTP_INTERNAL_SERVER_ERROR);
         }
-        
 
         return new JsonResponse(['token' => $token], JsonResponse::HTTP_OK);
+  
     }
 }
