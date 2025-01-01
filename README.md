@@ -12,8 +12,8 @@
 #### 🔧 Back-End
 
 ##### 🌐 API Integration :
-###### Authentication Route: Secure user login with token-based authentication.
-###### Product List Route: Provide a JSON feed of products for partners to display on their sites.
+##### Authentication Route: Secure user login with token-based authentication.
+##### Product List Route: Provide a JSON feed of products for partners to display on their sites.
 ##### ⚙️ API Access Management: Partners can activate or deactivate API access through their account settings.
 
 
