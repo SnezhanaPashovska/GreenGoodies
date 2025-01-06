@@ -36,7 +36,7 @@ class SuccessHandler implements AuthenticationSuccessHandlerInterface
     }
 
     // If API access is not enabled, return an error message
-    return new Response(json_encode(['error' => 'API access not enabled.']), Response::HTTP_FORBIDDEN, [
+    return new Response(json_encode(['code' => Response::HTTP_FORBIDDEN, 'message' => 'API access not enabled.']), Response::HTTP_FORBIDDEN, [
       'Content-Type' => 'application/json'
     ]);
   }

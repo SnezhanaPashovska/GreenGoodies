@@ -37,7 +37,7 @@ block body %}
       <div class="product-card_details">
         <p class="product-card_name">{{ product.name }}</p>
         <p class="product-card_description">{{ product.shortDescription }}</p>
-        <p class="product-card_price">{{ product.price }} €</p>
+        <p class="product-card_price">{{ (product.price )|number_format(2, ',', ' ') }} €</p>
       </div>
       <a href="{{path('app_product_detail', {id: product.id})}}" class="button">Voir le produit</a>
     </div>

@@ -9,18 +9,18 @@ endblock %} {% block body %}
   <div class="product-details">
     <div class="details">
       <h1>{{ product.name }}</h1>
-      <p class="price">{{ product.price }} €</p>
+      <p class="price">{{ (product.price)|number_format(2, ',', ' ') }} €</p>
       <h2>Description</h2>
       <p class="description">{{ product.description | nl2br }}</p>
     </div>
     
-    <div class="quantity-container">
+   <div class="quantity-container">
       <span id="quantity-text">
         {% if quantityInCart > 0 %}
         <label for="quantity">Quantité dans le panier:</label>
         <span id="quantity-text">{{ quantityInCart }}</span>
         {% endif %}
-    </div>
+    </div> 
 
     {% for message in app.flashes('product') %}
     <div class="flash-message success">

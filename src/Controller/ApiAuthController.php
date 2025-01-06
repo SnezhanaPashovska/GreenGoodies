@@ -38,22 +38,19 @@ class ApiAuthController extends AbstractController
         UserPasswordHasherInterface $passwordHasher,
         JWTTokenManagerInterface $jwtManager
     ): JsonResponse {
+        
         $data = json_decode($request->getContent(), true);
         $email = $data['email'] ?? null;
         $password = $data['password'] ?? null;
 
         if (!$email || !$password) {
-            return new JsonResponse(['message' => 'Username and password are required'], JsonResponse::HTTP_BAD_REQUEST);
+            return new JsonResponse(['message' => 'Email and password are required'], JsonResponse::HTTP_BAD_REQUEST);
         }
 
         $user = $userRepository->findOneBy(['email' => $email]);
 
         if (!$user || !$passwordHasher->isPasswordValid($user, $password)) {
             return new JsonResponse(['message' => 'Invalid credentials'], JsonResponse::HTTP_UNAUTHORIZED);
-        }
-
-        if (!$user->isApiAccess()) {
-            return new JsonResponse(['message' => 'API access not enabled'], JsonResponse::HTTP_FORBIDDEN);
         }
 
         $token = $jwtManager->create($user);

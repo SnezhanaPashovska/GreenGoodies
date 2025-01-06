@@ -120,7 +120,7 @@ class UserController extends AbstractController
      */
 
     #[Route('/delete-account/{id}', name: 'delete_account', methods: ['POST'])]
-    public function deleteAccount(int $id, Request $request, SessionInterface $session, TokenStorageInterface $tokenStorage): Response
+    public function deleteAccount(int $id, SessionInterface $session, TokenStorageInterface $tokenStorage): Response
     {
         $user = $this->entityManager->getRepository(User::class)->find($id);
 
